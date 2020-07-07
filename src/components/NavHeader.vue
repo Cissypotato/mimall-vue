@@ -28,7 +28,16 @@
             <span>小米手机</span>
             <!-- <div class="children"> -->
             <ul class="children">
-              <li>
+              <li v-for="item in phoneList" :key="item.id">
+                <a :href="'/#/product/'+item.id">
+                  <div class="img">
+                    <img src="item.mainImage"/>
+                  </div>
+                  <div class="name">{{item.name}}</div>
+                  <div class="price">{{item.price}}</div>
+                </a>
+              </li>
+              <!-- <li>
                 <a href="javascript:;">
                   <div class="img">
                     <img src="/imgs/item-box-1.png" />
@@ -72,16 +81,7 @@
                   <div class="name">小米9</div>
                   <div class="price">2999元</div>
                 </a>
-              </li>
-              <li>
-                <a href="javascript:;">
-                  <div class="img">
-                    <img src="/imgs/item-box-1.png" />
-                  </div>
-                  <div class="name">小米9</div>
-                  <div class="price">2999元</div>
-                </a>
-              </li>
+              </li> -->
             </ul>
             <!-- </div> -->
           </div>
@@ -234,6 +234,8 @@ export default {
        }
       }).then((res)=>{
         console.log(res)
+
+        this.phoneList=res.list
       })
     }
   }
