@@ -9,9 +9,10 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <div class="right">
-          <a href="javascript:;">登录</a>
-          <a href="javascript:;">注册</a>
-          <a href="javascript:;" class="cart">
+          <a href="javascript:;" v-if="userName">{{userName}}</a>
+          <a href="javascript:;" v-if="!userName" @click="toLogin">登录</a>
+          <a href="javascript:;" v-if="userName">我的订单</a>
+          <a href="javascript:;" class="cart" @click="toCart">
             <span class="cart-icon"></span>
             购物车(0)
           </a>
@@ -31,10 +32,10 @@
               <li v-for="item in phoneList" :key="item.id">
                 <a :href="'/#/product/'+item.id">
                   <div class="img">
-                    <img src="item.mainImage"/>
+                    <img :src="item.mainImage"/>
                   </div>
                   <div class="name">{{item.name}}</div>
-                  <div class="price">{{item.price}}</div>
+                  <div class="price">{{item.price | formatPrice}}</div>
                 </a>
               </li>
               <!-- <li>
@@ -222,11 +223,23 @@ export default {
       userName:"cissy",
     }
   },
+  filters:{
+    formatPrice(val){
+      if(!val) return "00.00元"
+      return val.toFixed(2) +"元"
+    }
+  },
   mounted(){
     this.getPhoneList()
 
   },
   methods:{
+    toLogin(){
+      this.$router.push('/login')
+    },
+     toCart(){
+      this.$router.push('/cart')
+    },
     getPhoneList(){
       this.axios.get('/products',{
        params:{
@@ -235,7 +248,7 @@ export default {
       }).then((res)=>{
         console.log(res)
 
-        this.phoneList=res.list
+        this.phoneList=res.list.slice(0,6)
       })
     }
   }
@@ -321,18 +334,21 @@ export default {
           font-weight: bold;
           color: rgba(51, 51, 51, 1);
           margin-left: 20px;
-          border: 1px solid red;
+          // border: 1px solid red;
           span {
             cursor: pointer;
+           
           }
-          &:hover {
+           &:hover {
             color: $colorA;
             .children {
               height: 220px;
               opacity: 1;
             }
           }
+          
           .children {
+            overflow: hidden;
             height: 0;
             opacity: 0;
             width: 1226px;
