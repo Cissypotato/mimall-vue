@@ -7,15 +7,15 @@
           <a href="javascript:;">预约维修服务</a>
         </li>
         <li>
-          <span class="icon"></span>
+          <span class="icon2"></span>
           <a href="javascript:;">7天无理由退货</a>
         </li>
         <li>
-          <span class="icon"></span>
+          <span class="icon3"></span>
           <a href="javascript:;">15天免费换货</a>
         </li>
         <li>
-          <span class="icon"></span>
+          <span class="icon4"></span>
           <a href="javascript:;">满150元包邮</a>
         </li>
       </ul>
@@ -61,7 +61,7 @@ export default {
           @include bgImg(18px, 18px, "/imgs/icon-setting.png", 20px);
         }
         .icon2 {
-          @include bgImg(18px, 18px, "/imgs/icon-7ddy.png", 20px);
+          @include bgImg(18px, 18px, "/imgs/icon-7day.png", 20px);
         }
         .icon3 {
           @include bgImg(18px, 18px, "/imgs/icon-15day.png", 20px);
