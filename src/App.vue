@@ -34,6 +34,7 @@ export default {
 
 <style>
 @import './assets/scss/reset.scss';
+@import './assets/scss/modal.scss';
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

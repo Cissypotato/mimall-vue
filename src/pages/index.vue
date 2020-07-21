@@ -60,24 +60,54 @@
       </div>
       <div class="ads-box">
         <a v-for="(item,index) in adsList" :key="index" :href="'/#/product/'+item.id">
-          <img :src="item.img" alt="">
+          <img :src="item.img" alt />
         </a>
       </div>
       <div class="banner-box">
-         <a href="/#/product/30">
-          <img src="/imgs/banner-1.png" alt="">
+        <a href="/#/product/30">
+          <img src="/imgs/banner-1.png" alt />
         </a>
       </div>
-      <div class="product-box"></div>
-    </div>11111111
-    2222
-    333
+    </div>
+    <div class="product-box">
+      <div class="container">
+        <h2>手机</h2>
+        <div class="wrapper">
+          <div class="banner-left">
+            <img src="/imgs/mix-alpha.jpg" alt />
+          </div>
+          <div class="item-wrapper">
+            <div class="item" v-for="(item,index) in newProList" :key="index">
+              <div class="tag">
+                
+                <span class="kill-pro"  v-if="index%4==0">秒杀</span>
+                <span class="new-pro" v-else >新品</span>
+              </div>
+              <div class="img">
+                <img :src="item.mainImage">
+              </div>
+              <div class="item-info">
+                <h3>{{item.name}}</h3>
+                <p>{{item.subtitle}}</p>
+                <p class="price">{{item.price}}元</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <service-bar></service-bar>
+    <modal title="提示" confirmText="点击查看详情" :showModal="true" btnType="1" modalType="middle">
+       <template #body>
+    <h1>加入购物车成功！</h1>
+  </template>
+    </modal>
   </div>
 </template>
 
 <script>
 import ServiceBar from "../components/ServiceBar";
+import Modal from "../components/Modal";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
 
@@ -86,7 +116,8 @@ export default {
   components: {
     swiper,
     swiperSlide,
-    ServiceBar
+    ServiceBar,
+    Modal
   },
   data() {
     return {
@@ -167,25 +198,43 @@ export default {
         0,
         0
       ],
-      adsList:[
+      adsList: [
         {
-          id:'33',
-          img:'/imgs/ads/ads-1.png'
+          id: "33",
+          img: "/imgs/ads/ads-1.png"
         },
         {
-          id:'48',
-          img:'/imgs/ads/ads-2.jpg'
+          id: "48",
+          img: "/imgs/ads/ads-2.jpg"
         },
         {
-          id:'45',
-          img:'/imgs/ads/ads-3.png'
+          id: "45",
+          img: "/imgs/ads/ads-3.png"
         },
         {
-          id:'47',
-          img:'/imgs/ads/ads-4.jpg'
-        },
-      ]
+          id: "47",
+          img: "/imgs/ads/ads-4.jpg"
+        }
+      ],
+      newProList: [1, 1, 1, 1, 1, 1, 1, 1]
     };
+  },
+  mounted() {
+    this.init()
+  },
+  methods: {
+    init() {
+      this.axios.get("/products", {
+        params: {
+          categoryId: 100012,
+          pageSize:14
+        }
+      }).then((res)=>{
+        console.log(res)
+        res.list=res.list.slice(6,14)
+        this.newProList=res.list
+      });
+    }
   }
 };
 </script>
@@ -271,20 +320,109 @@ export default {
       }
     }
   }
-  .ads-box{
+  .ads-box {
     display: flex;
     justify-content: space-between;
     margin: 14px 0 31px;
-    a{
+    a {
       display: inline-block;
       width: 296px;
       height: 167px;
     }
   }
-  .banner-box{
+  .banner-box {
     height: 130px;
-    a{display: block;}
+    a {
+      display: block;
+    }
   }
+  .product-box {
+    background: $colorH;
+    padding-bottom: 50px;
+    h2 {
+      line-height: 71px;
+      font-size: 22px;
+    }
+    .wrapper {
+      display: flex;
+      .banner-left {
+        margin-right: 16px;
+        img {
+          width: 224px;
+          height: 619px;
+          vertical-align: middle;
+        }
+      }
+      .item-wrapper {
+        display: flex;
+        width: 100%;
+        height: 619px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
 
+        .item {
+          background: #fff;
+          width: 236px;
+          height: 302px;
+          margin-right: 14px;
+          box-sizing: border-box;
+          .tag {
+            text-align: center;
+            color: #fff;
+            span {
+              display: inline-block;
+
+              width: 67px;
+              height: 24px;
+              line-height: 24px;
+              font-size: 14px;
+              &.new-pro {
+                background: #7ecf68;
+              }
+              &.kill-pro {
+                background: #e82626;
+              }
+            }
+          }
+          .img {
+            text-align: center;
+            height: 175px;
+            margin-top: 10px;
+            img {
+              // width: 100%;
+              height: 162px;
+              // height: 194px;
+            }
+          }
+          .item-info {
+            text-align: center;
+            h3 {
+              font-size: 14px;
+              font-family: FZLanTingHeiS-R-GB;
+              font-weight: bold;
+              color: $colorB;
+            }
+            p {
+              font-size: 12px;
+              font-weight: bold;
+              color: $colorD;
+            }
+            .price {
+              margin-top: 10px;
+              font-size: 14px;
+              color: #f20a0a;
+              &::after {
+                content: "";
+                @include bgImg(22px, 15px, "/imgs/icon-cart-hover.png");
+                vertical-align: middle;
+                margin-left: 8px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 </style>
