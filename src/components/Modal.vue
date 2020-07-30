@@ -10,8 +10,11 @@
                 <slot name="body"></slot>
             </div>
             <div class="modal-footer">
-                <a href="javascript:;" class="btn">{{confirmText}}</a>
-                <a href="javascript:;" class="btn">{{cancelText}}</a>
+                <div class="btn-group">
+                     <a href="javascript:;" class="btn">{{confirmText}}</a>
+                <a href="javascript:;" class="btn btn-default">{{cancelText}}</a>
+                </div>
+               
             </div>
         </div>
     </div>
@@ -44,5 +47,7 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '../assets/scss/config.scss';
+@import '../assets/scss/modal.scss';
 
 </style>

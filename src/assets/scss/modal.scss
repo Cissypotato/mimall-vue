@@ -1,0 +1,45 @@
+@import './mixin.scss';
+
+
+.modal{
+    @include position(fixed);
+    z-index: 9999;
+    .mask{
+        @include position(fixed);
+        background-color: $colorI;
+        opacity: 0.2; 
+    }
+    .main{
+        background: #fff;
+        @include position(absolute,40%,50%,660px,auto);
+        transform: translate(-50%,-50%);
+        .modal-header{
+            padding: 0 26px;
+            height: 60px;
+            line-height: 60px;
+            font-size: 16px;
+            color: $colorB;
+            background-color: $colorJ;
+            .icon-close{
+                display: inline-block;
+                @include positionImg(absolute,23px,26px,14px,14px,'/imgs/icon-close.png');
+                transition: transform .5s;
+                &:hover{
+                    transform: scale(1.5);
+                }
+            }
+           
+        }
+        .modal-body{
+            padding: 30px 40px 54px;
+            font-size: 16px;
+            color: $colorB;
+        }
+        .modal-footer{
+            height: 82px;
+            line-height: 82px;
+            background: $colorJ;
+            text-align: center;
+        }
+    }
+}

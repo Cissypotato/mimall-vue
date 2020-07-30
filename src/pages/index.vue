@@ -99,7 +99,7 @@
     <service-bar></service-bar>
     <modal title="提示" confirmText="点击查看详情" :showModal="true" btnType="1" modalType="middle">
        <template #body>
-    <h1>加入购物车成功！</h1>
+    <div>加入购物车成功！</div>
   </template>
     </modal>
   </div>
