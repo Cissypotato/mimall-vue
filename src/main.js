@@ -3,6 +3,9 @@ import App from './App.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import router from './router'
+import VueLazyload from 'vue-lazyload'
+ 
+
 // import baseURL from './util/env'
 const mock=true
 if(mock){
@@ -34,6 +37,12 @@ axios.interceptors.response.use(function (response) {
 
 
 Vue.use(VueAxios,axios)
+Vue.use(VueLazyload,{
+  preLoad: 1.3,
+  error: '',
+  loading: 'imgs/loading-svg/loading-cube.svg',
+  attempt: 1
+})
 Vue.config.productionTip = false
 
 new Vue({

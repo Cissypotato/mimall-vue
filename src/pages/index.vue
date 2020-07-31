@@ -89,7 +89,7 @@
               <div class="item-info">
                 <h3>{{item.name}}</h3>
                 <p>{{item.subtitle}}</p>
-                <p class="price">{{item.price}}元</p>
+                <p class="price" @click="addCart(item.id)">{{item.price}}元</p>
               </div>
             </div>
           </div>
@@ -97,7 +97,11 @@
       </div>
     </div>
     <service-bar></service-bar>
-    <modal title="提示" confirmText="点击查看详情" :showModal="true" btnType="1" modalType="middle">
+    <modal title="提示" confirmText="点击查看详情" :showModal="showModal" btnType="1"
+     modalType="middle"
+     @cancel="closeModal"
+     @submit="toCart"
+     >
        <template #body>
     <div>加入购物车成功！</div>
   </template>
@@ -118,6 +122,7 @@ export default {
     swiperSlide,
     ServiceBar,
     Modal
+   
   },
   data() {
     return {
@@ -216,7 +221,8 @@ export default {
           img: "/imgs/ads/ads-4.jpg"
         }
       ],
-      newProList: [1, 1, 1, 1, 1, 1, 1, 1]
+      newProList: [1, 1, 1, 1, 1, 1, 1, 1],
+      showModal:false
     };
   },
   mounted() {
@@ -234,6 +240,21 @@ export default {
         res.list=res.list.slice(6,14)
         this.newProList=res.list
       });
+    },
+    addCart(){
+      this.showModal=true
+//       this.axios.post('/carts',{
+//         productId:id,
+// selected: true
+//       }).then((res)=>{
+//         console.log(res)
+//       })
+    },
+    closeModal(){
+      this.showModal=false
+    },
+    toCart(){
+      this.$router.push('/cart')
     }
   }
 };
