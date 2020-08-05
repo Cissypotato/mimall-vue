@@ -60,12 +60,12 @@
       </div>
       <div class="ads-box">
         <a v-for="(item,index) in adsList" :key="index" :href="'/#/product/'+item.id">
-          <img :src="item.img" alt />
+          <img v-lazy="item.img" alt />
         </a>
       </div>
       <div class="banner-box">
         <a href="/#/product/30">
-          <img src="/imgs/banner-1.png" alt />
+          <img v-lazy="'/imgs/banner-1.png'" alt />
         </a>
       </div>
     </div>
@@ -84,7 +84,7 @@
                 <span class="new-pro" v-else >新品</span>
               </div>
               <div class="img">
-                <img :src="item.mainImage">
+                <img v-lazy="item.mainImage">
               </div>
               <div class="item-info">
                 <h3>{{item.name}}</h3>

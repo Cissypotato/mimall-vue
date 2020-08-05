@@ -220,7 +220,7 @@ export default {
   data(){
     return {
       phoneList:[],
-      userName:"cissy",
+      userName:"",
     }
   },
   filters:{

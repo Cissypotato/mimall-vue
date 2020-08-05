@@ -22,12 +22,23 @@ axios.defaults.timeout=8000
 axios.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   let res=response.data
+  console.log(res)
+  let a=location.hash
   if(res.status==0){
-    return res.data
+    if(!res.data){
+      return res.msg
+    }else{
+      return res.data
+    }
+    
   }else if(res.status==10){
-    window.location.href="/#/login"
+    if(a!='#/index'){
+      window.location.href="/#/login"
+    }
+    
   }else{
     alert(res.msg)
+    return Promise.reject(res);
   }
  
 }, function (error) {
@@ -38,11 +49,10 @@ axios.interceptors.response.use(function (response) {
 
 Vue.use(VueAxios,axios)
 Vue.use(VueLazyload,{
-  preLoad: 1.3,
-  error: '',
-  loading: 'imgs/loading-svg/loading-cube.svg',
-  attempt: 1
+  loading: '/imgs/loading-svg/loading-bars.svg',
 })
+var VueCookie = require('vue-cookie');
+Vue.use(VueCookie);
 Vue.config.productionTip = false
 
 new Vue({

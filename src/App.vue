@@ -28,6 +28,18 @@ export default {
     this.axios.get('/user/login').then((res)=>{
       this.res=res
     })
+  },
+  methods:{
+    getUser(){
+      this.axios.get('/user').then(()=>{
+
+      })
+    },
+    getCartCount(){
+      this.axios.get('/user').then(()=>{
+
+      })
+    }
   }
 }
 </script>
