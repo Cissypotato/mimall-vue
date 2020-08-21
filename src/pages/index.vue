@@ -299,7 +299,13 @@ export default {
             background: $colorA;
           }
         }
+        &:hover{
+          >.item-children{
+            display: block;
+          }
+        }
         .item-children {
+          display: none;
           border-top: 1px solid #e5e5e5;
           position: absolute;
           left: 264px;

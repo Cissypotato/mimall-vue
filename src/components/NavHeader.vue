@@ -419,8 +419,7 @@ export default {
       .right {
         width: 319px;
         height: 50px;
-        border: 1px solid #e0e0e0;
-
+        outline: 1px solid #e0e0e0;
         display: flex;
         align-items: center;
         input {
