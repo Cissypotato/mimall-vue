@@ -20,24 +20,27 @@ export default {
     
   },
   mounted(){
-    
+    this.getUser()
+    this.getCartCount()
     // storage.setItem("name","cissy",'user')
     // // let b=storage.getStorage()
     // storage.deleteItem("name","user")
     // // console.log(b)
-    this.axios.get('/user/login').then((res)=>{
-      this.res=res
-    })
+    // this.axios.get('/user/login').then((res)=>{
+    //   this.res=res
+    // })
   },
   methods:{
     getUser(){
-      this.axios.get('/user').then(()=>{
-
+      this.axios.get('/user').then((res)=>{
+        console.log(res,1111)
+      this.$store.dispatch('saveUsername',res.username)
       })
     },
     getCartCount(){
-      this.axios.get('/user').then(()=>{
-
+      this.axios.get('/carts/products/sum').then((res)=>{
+        console.log(res,'cartCount')
+        this.$store.dispatch('saveCartCount',res||0)
       })
     }
   }
