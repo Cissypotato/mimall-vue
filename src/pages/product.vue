@@ -7,7 +7,8 @@
     </ProductParam>
     <div class="banner1">
       <div class="title">
-      小米<div class="b">8</div>
+        小米
+        <div class="b">8</div>
       </div>
       <div class="info">8周年旗舰版</div>
       <div class="tags">
@@ -17,79 +18,77 @@
         <span>|</span>红外人脸识别
       </div>
       <div class="price">
-        <span class="real"><span>￥</span>2599</span>
-        <span class="fore"><span>￥</span>2999</span>
+        <span class="real">
+          <span>￥</span>2599
+        </span>
+        <span class="fore">
+          <span>￥</span>2999
+        </span>
       </div>
     </div>
     <div class="container">
-      <img src="../../public/imgs/product/product-bg-2.png" alt="" srcset="">
+      <img src="../../public/imgs/product/product-bg-2.png" alt srcset />
     </div>
     <div class="banner2">
-     <img src="../../public/imgs/product/product-bg-3.png" alt="" srcset="">
+      <img src="../../public/imgs/product/product-bg-3.png" alt srcset />
     </div>
     <div class="slider-box">
-    <swiper :options="swiperOption">
-          <swiper-slide v-for="(item,index) in swiperList" :key="index">
-            <a :href="'/#/product/'+item.id">
-              <img :src="item.img" />
-            </a>
-          </swiper-slide>
-          <div class="swiper-pagination" slot="pagination"></div>
-          <div class="swiper-button-prev" slot="button-prev"></div>
-          <div class="swiper-button-next" slot="button-next"></div>
-        </swiper>
-    
+      <swiper :options="swiperOption">
+        <swiper-slide v-for="(item,index) in swiperList" :key="index">
+          <img :src="item.img" />
+        </swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </swiper>
+     <div class="slider-title">小米8 AI变焦双摄拍摄</div>
     </div>
   </div>
 </template>
 
 <script>
 import ProductParam from "../components/ProductParam";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
   name: "product",
   components: {
     ProductParam,
+    swiper,
+    swiperSlide,
   },
-data(){
-  return{
-     swiperOption: {
-        autoplay: true,
-        effect: "cube",
-        loop: true,
+  data() {
+    return {
+      swiperOption: {
+        autoplay: false,
+        slidesPerView: 3,
+        spaceBetween: 22,
         pagination: {
           el: ".swiper-pagination",
-          clickable: true
+          clickable: true,
         },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
-        }
       },
       swiperList: [
         {
-          id: "42",
-          img: "/imgs/slider/slide-1.jpg"
-        },
-        {
           id: "45",
-          img: "/imgs/slider/slide-2.jpg"
+          img: "/imgs/product/gallery-2.png",
         },
         {
           id: "46",
-          img: "/imgs/slider/slide-3.jpg"
+          img: "/imgs/product/gallery-3.png",
         },
         {
           id: "",
-          img: "/imgs/slider/slide-4.jpg"
+          img: "/imgs/product/gallery-4.png",
         },
         {
           id: "",
-          img: "/imgs/slider/slide-5.jpg"
-        }
+          img: "/imgs/product/gallery-5.jpg",
+        },
+        {
+          id: "",
+          img: "/imgs/product/gallery-6.jpg",
+        },
       ],
-  }
-
-  }
+    };
+  },
 };
 </script>
 
@@ -99,63 +98,93 @@ data(){
 @import "../assets/scss/mixin.scss";
 
 .product {
-  .banner1{
-    @include bgImg(100vw,718px,'../../public/imgs/product/product-bg-1.png','cover');
-    >div{
+  .banner1 {
+    @include bgImg(
+      100vw,
+      718px,
+      "../../public/imgs/product/product-bg-1.png",
+      "cover"
+    );
+    > div {
       text-align: center;
-      color:#333;
-      font-weight:bold;
+      color: #333;
+      font-weight: bold;
     }
-    .title{
-      font-size:80px;
+    .title {
+      font-size: 80px;
       margin-top: 50px;
-      >.b{
+      > .b {
         display: inline-block;
-        margin-bottom:-12px;
+        margin-bottom: -12px;
         font-size: 99px;
         line-height: 120px;
         vertical-align: bottom;
       }
     }
-    .info{
-      
-      font-size:24px;
+    .info {
+      font-size: 24px;
       letter-spacing: 0.6em;
       // margin-top: 50px;
     }
-    .tags{
-      font-size:16px;
+    .tags {
+      font-size: 16px;
       margin-top: 10px;
-      span{
-        color: #BFAB9D;
+      span {
+        color: #bfab9d;
         margin: 0 15px;
       }
     }
-    .price{
+    .price {
       border: 1px solid pink;
       margin-top: 30px;
-      .real{
+      .real {
         font-size: 38px;
-        >span{font-size:30px;margin-right: 2px;margin-top: -4px;
-        display: inline-block;vertical-align: top;}
+        > span {
+          font-size: 30px;
+          margin-right: 2px;
+          margin-top: -4px;
+          display: inline-block;
+          vertical-align: top;
+        }
       }
-      .fore{
+      .fore {
         font-size: 26px;
         text-decoration: line-through;
         margin-left: 11px;
-        
       }
     }
   }
-  >.container{
-    
-    img{width: 100%;}
+  > .container {
+    img {
+      width: 100%;
+    }
   }
-  .banner2{
-     img{width: 100%;vertical-align: middle;}
+  .banner2 {
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
   }
-  .swiper-box{
+  .slider-box {
+    margin-top: 36px;
     position: relative;
+    .swiper-container {
+      width: 100%;
+      .swiper-slide {
+      }
+      img {
+        width: 100%;
+        vertical-align: middle;
+      }
+    }
+    .slider-title{
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+      margin:20px 0;
+      line-height: 42px;
+    }
+    
   }
 }
 </style>

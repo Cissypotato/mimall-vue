@@ -260,7 +260,7 @@ export default {
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss" sscoped>
 @import "../assets/scss/base.scss";
 @import "../assets/scss/config.scss";
 @import "../assets/scss/mixin.scss";

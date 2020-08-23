@@ -50,6 +50,7 @@ export default {
         width: 100%;
         top:0;
         box-shadow: 0 5px 5px #eee;
+        z-index: 99;
     }
     .container{
         display: flex;
