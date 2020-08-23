@@ -41,6 +41,23 @@
       </swiper>
      <div class="slider-title">小米8 AI变焦双摄拍摄</div>
     </div>
+    <div class="video-box">
+      <div class="intro">
+      60帧超慢动作摄影<br> 慢慢回味每一瞬间的精彩
+      </div>
+      <div class="info">
+      后置960帧电影般超慢动作视频，将眨眼间的美妙展现得淋漓尽致！<br> 更能AI 精准分析视频内容，15个场景智能匹配背景音效。
+      </div>
+      <div class="video-bg"></div>
+      <div class="video-wrapper">
+       <div class="overlay"></div>
+       <div class="video">
+        <span class="icon-close"></span>
+        <video src="/imgs/product/video.mp4" muted autoplay controls></video>
+       </div>
+      </div>
+    
+    </div>
   </div>
 </template>
 
@@ -171,11 +188,12 @@ export default {
     .swiper-container {
       width: 100%;
       .swiper-slide {
-      }
-      img {
+         img {
         width: 100%;
         vertical-align: middle;
       }
+      }
+     
     }
     .slider-title{
       text-align: center;
@@ -185,6 +203,61 @@ export default {
       line-height: 42px;
     }
     
+  }
+  .video-box{
+    padding-top: 75px;
+    width: 100%;
+    height:1144px ;
+    background: #070708;
+    text-align: center;
+    color: #fff;
+    >.intro{
+     line-height: 80px;
+      font-size:60px ; 
+    }
+    >.info{
+      margin-top: 30px;
+      font-size:24px ; 
+      line-height: 36px;
+    }
+    .video-bg{
+      width: 1126px;
+      height: 540px;
+      margin: 50px auto 0;
+      @include bgImg(1126px,540px,'/imgs/product/gallery-1.png','cover')
+    }
+    .video-wrapper{ 
+      .overlay{
+       @include position(fixed,0,0,100vw,100vh);
+        background: #000;
+        opacity: 0.3;
+        z-index: 100;
+      }
+      .video{
+        width:1000px ;
+        height:536px ;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 100;
+        .icon-close{
+          position: absolute;
+          top:20px;
+          right:20px;
+          z-index: 101;
+          @include bgImg(20px,20px,'/imgs/icon-close.png');
+          cursor: pointer;
+        }
+
+        video{
+          width: 100%;
+          height: 100%;
+          outline: none;
+          object-fit: cover;
+        }
+      }
+    }
   }
 }
 </style>
