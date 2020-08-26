@@ -241,19 +241,21 @@ export default {
         this.newProList=res.list
       });
     },
-    addCart(){
-      this.showModal=true
-//       this.axios.post('/carts',{
-//         productId:id,
-// selected: true
-//       }).then((res)=>{
-//         console.log(res)
-//       })
+    addCart(id){
+      this.axios.post('/carts',{
+        productId:id,
+        selected: true
+      }).then((res)=>{
+        this.showModal=true
+        console.log(res,3333)
+        this.$store.dispatch('saveCartCount',res.cartTotalQuantity)
+      })
     },
     closeModal(){
       this.showModal=false
     },
     toCart(){
+      
       this.$router.push('/cart')
     }
   }

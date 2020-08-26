@@ -32,15 +32,15 @@ export default {
   },
   methods:{
     getUser(){
-      this.axios.get('/user').then((res)=>{
-        console.log(res,1111)
+      this.axios.get('/user').then((res={})=>{
+        // console.log(res,1111)
       this.$store.dispatch('saveUsername',res.username)
       })
     },
     getCartCount(){
-      this.axios.get('/carts/products/sum').then((res)=>{
-        console.log(res,'cartCount')
-        this.$store.dispatch('saveCartCount',res||0)
+      this.axios.get('/carts/products/sum').then((res=0)=>{
+        // console.log(res,'cartCount')
+        this.$store.dispatch('saveCartCount',res)
       })
     }
   }
