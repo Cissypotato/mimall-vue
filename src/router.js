@@ -9,7 +9,7 @@ import Cart from "./pages/cart.vue"
 import Login from "./pages/login.vue"
 import Order from "./pages/order.vue"
 import OrderList from "./pages/orderList.vue"
-import OrderConfirm from "./pages/orderConfirm.vue"
+import Confirm from "./pages/confirm.vue"
 import OrderPay from "./pages/orderPay.vue"
 import Alipay from "./pages/alipay.vue"
 
@@ -68,9 +68,9 @@ export default new Router({
           component:OrderPay
         },
         {
-          path:'orderConfirm',
-          name:"orderConfirm",
-          component:OrderConfirm
+          path:'confirm',
+          name:"confirm",
+          component:Confirm
         },
         {
           path:'alipay',

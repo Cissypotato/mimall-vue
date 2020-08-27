@@ -7,10 +7,11 @@
           <a href="javascript:;">MIUI</a>
           <a href="javascript:;">云服务</a>
           <a href="javascript:;">协议规则</a>
-        </div>
+        </div>logout
         <div class="right">
           <a href="javascript:;" v-if="userName">{{userName}}</a>
           <a href="javascript:;" v-if="!userName" @click="toLogin">登录</a>
+           <a href="javascript:;" v-if="userName" @click="logout">退出</a>
           <a href="javascript:;" v-if="userName">我的订单</a>
           <a href="javascript:;" class="cart" @click="toCart">
             <span class="cart-icon"></span>
@@ -215,6 +216,7 @@
 </template>
 
 <script>
+import { Message} from 'element-ui';
 export default {
   name: "nav-header",
   data(){
@@ -238,11 +240,32 @@ export default {
   },
   mounted(){
     this.getPhoneList()
-
+    let params=this.$route.params
+    console.log(params,'params')
+    if(params && params.from=="login"){
+      this.getCartCount()
+    }
+    
   },
   methods:{
     toLogin(){
       this.$router.push('/login')
+    },
+    logout(){
+      console.log(1)
+       this.axios.post('/user/logout').then((res)=>{
+         console.log(res)
+        Message.success('退出成功')
+        this.$cookie.set('userId', '', {expires: -1});
+        this.$store.dispatch('saveUsername','')
+        this.$store.dispatch('saveCartCount',0)
+      })
+    },
+    getCartCount(){
+      this.axios.get('/carts/products/sum').then((res=0)=>{
+        // console.log(res,'cartCount')
+        this.$store.dispatch('saveCartCount',res)
+      })
     },
      toCart(){
       this.$router.push('/cart')

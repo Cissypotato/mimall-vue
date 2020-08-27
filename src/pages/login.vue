@@ -38,6 +38,7 @@
   </div>
 </template>
 <script>
+import { Message} from 'element-ui';
 export default {
   name: "login",
   data() {
@@ -58,19 +59,23 @@ export default {
       // alert('login')
       let { username, password } = this;
       if(!username || !password){
-        alert('请填写完整信息')
+        Message.warning('请填写完整信息')
       }else{
         this.axios
         .post("/user/login", {
           username,
           password,
         })
-        .then((res) => {
-          
-          this.$cookie.set('userId', res.id, {expires: '1M'});
+        .then((res) => {  
+          this.$cookie.set('userId', res.id, {expires: 'Session'});
           this.$store.dispatch('saveUsername',res.username)
-          console.log(res,'login');
-          this.$router.push('/index')
+          // console.log(res,'login');
+          this.$router.push({
+            name:'index',
+            params:{
+              from:'login'
+            }
+          })
         });
       }
       
@@ -78,7 +83,7 @@ export default {
     register() {
       let { username, password, email } = this;
       if(!username || !password || !email){
-        alert('请填写完整信息')
+        Message.warning('请填写完整信息')
       }else{
          this.axios
         .post("/user/register", {
@@ -89,7 +94,7 @@ export default {
         .then((res) => {
           console.log(res);
           if (res) {
-            alert(res);
+            Message.warning(res);
             this.loginType == false;
           }
         });

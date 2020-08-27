@@ -8,17 +8,21 @@
           <h2>{{title}}<slot name="tip"></slot></h2>
         </div>
         <div class="right">
-          cissy
+          {{userName}}
         </div>
       </div>
     </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   name:"order-header",
   props:{
     title:String
+  },
+  computed:{
+    ...mapState(['userName'])
   }
 }
 </script>
