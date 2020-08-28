@@ -4,7 +4,7 @@
         <div class="mask"></div>
         <div class="main">
             <div class="modal-header">
-                <span>标题</span>
+                <span>{{title}}</span>
                 <a href="javascript:;" class="icon-close" v-on:click="$emit('cancel')"></a>
             </div>
             <div class="modal-body">

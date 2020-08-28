@@ -32,6 +32,7 @@ export default {
 @import "../assets/scss/mixin.scss";
 @import "../assets/scss/config.scss";
 .order-header{
+  border-bottom: 2px solid #FF6600;
   .container {
       height: 112px;
       line-height: 112px;
@@ -67,7 +68,7 @@ export default {
       .middle {
         flex: 1;
         padding-left: 53px;
-        font-weight: bold;
+       
         >h2{
         font-size: 28px;
         color: #333;

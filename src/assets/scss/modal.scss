@@ -3,7 +3,7 @@
 
 .modal{
     @include position(fixed);
-    z-index: 9999;
+    z-index: 9;
     transition: top .5s;
     
     &.slide-enter-active{
