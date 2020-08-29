@@ -44,7 +44,10 @@ export default {
         this.tip="请谨防钓鱼链接或诈骗电话，了解更多>"
       }else if(path=="/order/orderPay"){
         this.title="订单支付"
-        this.tip=""
+        this.tip="请谨防钓鱼链接或诈骗电话，了解更多>"
+      }else{
+        this.title="订单支付"
+        this.tip="请谨防钓鱼链接或诈骗电话，了解更多>"
       }
     }
   }

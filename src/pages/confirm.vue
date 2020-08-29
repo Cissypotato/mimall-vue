@@ -265,7 +265,7 @@ export default {
 @import '../assets/scss/mixin.scss';
 @import '../assets/scss/btn.scss';
   .order-confirm{
-    background: #e5e5e5;
+    background: #f5f5f5;
     padding-top: 30px;
     padding-bottom: 200px;
     >.container{
