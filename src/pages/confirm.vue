@@ -1,6 +1,11 @@
 
 <template>
   <div class="order-confirm">
+     <order-header title="确认订单">
+      <template v-slot:tip>
+        <span>请认真填写地址</span>
+      </template>
+    </order-header>
    <div class="container">
       <div class="address-wrapper">
        <div class="title">收货地址</div>
@@ -130,6 +135,7 @@
 </template>
 
 <script>
+import orderHeader from '../components/OrderHeader'
  import Modal from '../components/Modal'
  import { Message} from 'element-ui';
 export default {
@@ -148,7 +154,8 @@ export default {
     }
   },
   components:{
-    Modal
+    Modal,
+    orderHeader
   },
   mounted(){
     this.getAddressList()
@@ -266,9 +273,10 @@ export default {
 @import '../assets/scss/btn.scss';
   .order-confirm{
     background: #f5f5f5;
-    padding-top: 30px;
+    
     padding-bottom: 200px;
     >.container{
+      margin-top: 30px;
       padding-left:63px;
       padding-right:40px;
       padding-bottom:90px;

@@ -49,11 +49,12 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(res);
   }
  
-}, function (error) {
+}, function(error){
+  console.log(error)
   // 对响应错误做点什么
-  let res=error.response
-  Message.error(res.msg)
-  return Promise.reject(error.data.message);
+  // let res=error.response
+  Message.error(error)
+  return Promise.reject(error);
 });
 
 

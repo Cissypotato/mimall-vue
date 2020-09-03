@@ -27,13 +27,14 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 @import "../assets/scss/base.scss";
 @import "../assets/scss/mixin.scss";
 @import "../assets/scss/config.scss";
 .order-header{
   border-bottom: 2px solid #FF6600;
-  .container {
+  background: #fff;
+  >.container {
       height: 112px;
       line-height: 112px;
       display: flex;

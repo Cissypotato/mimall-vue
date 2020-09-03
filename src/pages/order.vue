@@ -1,11 +1,11 @@
 
 <template>
   <div>
-    <order-header :title="title">
+   <!-- <order-header :title="title">
       <template v-slot:tip>
         <span>{{tip}}</span>
       </template>
-    </order-header>
+    </order-header>-->
      <router-view></router-view>
      <service-bar></service-bar>
     <nav-footer></nav-footer>
@@ -13,13 +13,12 @@
 </template>
 
 <script>
-import orderHeader from '../components/OrderHeader'
+// import orderHeader from '../components/OrderHeader'
 import ServiceBar from "../components/ServiceBar";
 import navFooter from '../components/NavFooter'
 export default {
   name:'order',
   components:{
-    orderHeader,
     navFooter,
     ServiceBar
   },
@@ -30,7 +29,7 @@ export default {
     }
   },
   mounted(){
-    this.getPath()
+    // this.getPath()
   },
   methods:{
     getPath(){
@@ -41,13 +40,13 @@ export default {
         this.tip="请认真填写地址"
       }else if(path=="/order/orderList"){
         this.title="订单列表"
-        this.tip="请谨防钓鱼链接或诈骗电话，了解更多>"
+        this.tip="请谨防钓鱼链接或诈骗电话"
       }else if(path=="/order/orderPay"){
         this.title="订单支付"
-        this.tip="请谨防钓鱼链接或诈骗电话，了解更多>"
+        this.tip="请谨防钓鱼链接或诈骗电话"
       }else{
         this.title="订单支付"
-        this.tip="请谨防钓鱼链接或诈骗电话，了解更多>"
+        this.tip="请谨防钓鱼链接或诈骗电话"
       }
     }
   }

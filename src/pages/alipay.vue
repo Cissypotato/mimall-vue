@@ -1,17 +1,25 @@
 
 <template>
   <div class="alipay">
+     <order-header title="订单支付">
+      <template v-slot:tip>
+        <span>请谨防钓鱼链接或诈骗电话</span>
+      </template>
+    </order-header>
    <div v-html="content"></div>
    <loading> </loading>
   </div>
 </template>
 
 <script>
+import orderHeader from '../components/OrderHeader'
 import Loading from '../components/Loading'
 export default {
   name:"alipay",
   components:{
-    Loading
+    Loading,
+    orderHeader
+
   },
   data(){
     return{

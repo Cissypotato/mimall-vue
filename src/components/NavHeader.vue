@@ -12,7 +12,7 @@
           <a href="javascript:;" v-if="userName">{{userName}}</a>
           <a href="javascript:;" v-if="!userName" @click="toLogin">登录</a>
            <a href="javascript:;" v-if="userName" @click="logout">退出</a>
-          <a href="javascript:;" v-if="userName">我的订单</a>
+          <a href="javascript:;" v-if="userName" @click="toOrderList">我的订单</a>
           <a href="javascript:;" class="cart" @click="toCart">
             <span class="cart-icon"></span>
             购物车({{cartCount}})
@@ -269,6 +269,9 @@ export default {
     },
      toCart(){
       this.$router.push('/cart')
+    },
+    toOrderList(){
+      this.$router.push('/order/orderList')
     },
     getPhoneList(){
       this.axios.get('/products',{
