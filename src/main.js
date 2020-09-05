@@ -4,7 +4,9 @@ import VueAxios from 'vue-axios'
 import router from './router'
 import VueLazyload from 'vue-lazyload'
 import { Message} from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import '../element-variables.scss';
+// import 'element-ui/lib/theme-chalk/index.css';
+
 import store from './store/index.js'
 import VueCookie from  'vue-cookie'
 

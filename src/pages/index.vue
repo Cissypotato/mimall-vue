@@ -446,6 +446,7 @@ export default {
                 @include bgImg(22px, 15px, "/imgs/icon-cart-hover.png");
                 vertical-align: middle;
                 margin-left: 8px;
+                cursor: pointer;
               }
             }
           }
